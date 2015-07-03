@@ -53,7 +53,7 @@
 		this.addListener.listeners.splice(this.addListener.listeners.indexof(listener), 1);
 	};
 
-	window.matchMedia = Window.prototype.matchMedia = function matchMedia(query) {
+	window.matchMedia = function matchMedia(query) {
 		var
 		window = this,
 		list = new MediaQueryList();
@@ -79,4 +79,8 @@
 
 		return list;
 	};
+
+	if (window.Window && window.Window.prototype) {
+		Window.prototype.matchMedia = window.matchMedia;
+	}
 })();
